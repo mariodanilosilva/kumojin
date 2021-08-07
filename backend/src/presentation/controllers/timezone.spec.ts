@@ -1,7 +1,7 @@
 import { TimezoneController } from './timezone'
 import { LoadTimezone } from '../../domain/usecases/load-timezone'
 import { TimezoneModel } from '../../model/timezone'
-import { ok } from '../helpers/http-helper'
+import { ok, serverError } from '../helpers/http-helper'
 
 const makeFakeTimezone = (): TimezoneModel => ({ timezone: 'any_timezone' })
 
@@ -39,5 +39,12 @@ describe('Timezone Controller', () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle()
     expect(httpResponse).toEqual(ok(makeFakeTimezone()))
+  })
+
+  test('Should return 500 if LoadTimezone throws', async () => {
+    const { sut, loadTimezoneStub } = makeSut()
+    jest.spyOn(loadTimezoneStub, 'load').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    const httpResponse = await sut.handle()
+    expect(httpResponse).toEqual(serverError(new Error()))
   })
 })
