@@ -39,4 +39,11 @@ describe('DbLoadTimezone', () => {
     const timezone = await sut.load()
     expect(timezone).toEqual(makeFakeTimezone())
   })
+
+  test('Should return 500 if LoadTimezoneRepository throws', async () => {
+    const { sut, loadTimezoneRepositoryStub } = makeSut()
+    jest.spyOn(loadTimezoneRepositoryStub, 'load').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    const promise = sut.load()
+    await expect(promise).rejects.toThrow()
+  })
 })
