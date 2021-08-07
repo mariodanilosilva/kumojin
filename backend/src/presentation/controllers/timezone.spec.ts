@@ -28,16 +28,16 @@ const makeSut = (): SutTypes => {
 }
 
 describe('Timezone Controller', () => {
-  test('Should return 200 on success', async () => {
-    const { sut } = makeSut()
-    const httpResponse = await sut.handle()
-    expect(httpResponse).toEqual(ok('any_data'))
-  })
-
   test('Should call LoadTimezone', async () => {
     const { sut, loadTimezoneStub } = makeSut()
     const loadSpy = jest.spyOn(loadTimezoneStub, 'load')
     await sut.handle()
     expect(loadSpy).toHaveBeenCalled()
+  })
+
+  test('Should return 200 on success', async () => {
+    const { sut } = makeSut()
+    const httpResponse = await sut.handle()
+    expect(httpResponse).toEqual(ok(makeFakeTimezone()))
   })
 })

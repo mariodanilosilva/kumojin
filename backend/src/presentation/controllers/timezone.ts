@@ -9,7 +9,7 @@ export class TimezoneController implements Controller {
   }
 
   async handle (): Promise<HttpResponse> {
-    await this.loadTimezone.load()
-    return ok('any_data')
+    const timezone = await this.loadTimezone.load()
+    return ok(timezone)
   }
 }
