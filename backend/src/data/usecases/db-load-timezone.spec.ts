@@ -33,4 +33,10 @@ describe('DbLoadTimezone', () => {
     await sut.load()
     expect(loadSpy).toHaveBeenCalled()
   })
+
+  test('Should return a Timezone on success', async () => {
+    const { sut } = makeSut()
+    const timezone = await sut.load()
+    expect(timezone).toEqual(makeFakeTimezone())
+  })
 })

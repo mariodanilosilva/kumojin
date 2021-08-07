@@ -7,7 +7,7 @@ export class DbLoadTimezone implements LoadTimezone {
   }
 
   async load (): Promise<TimezoneModel> {
-    await this.loadTimezoneRepository.load()
-    return null
+    const timezone = await this.loadTimezoneRepository.load()
+    return timezone
   }
 }
