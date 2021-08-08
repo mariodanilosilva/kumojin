@@ -2,9 +2,9 @@
   "name": "kumojin-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/src/main/server.js",
+  "main": "dist/main/server.js",
   "scripts": {
-    "start": "tsc & node .",
+    "start": "tsc && node .",
     "test": "jest --watch"
   },
   "keywords": [],
