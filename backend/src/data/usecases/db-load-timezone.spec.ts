@@ -2,7 +2,7 @@ import { DbLoadTimezone } from './db-load-timezone'
 import { LoadTimezoneRepository } from '../protocols/load-timezone-repository'
 import { TimezoneModel } from '../../model/timezone'
 
-const makeFakeTimezone = (): TimezoneModel => ({ timezone: 'any_timezone' })
+const makeFakeTimezone = (): TimezoneModel => ({ timezone: 'any_timezone', time: 'any_time' })
 
 type SutTypes = {
   sut: DbLoadTimezone

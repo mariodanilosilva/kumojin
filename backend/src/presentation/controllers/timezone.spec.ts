@@ -3,7 +3,7 @@ import { LoadTimezone } from '../../domain/usecases/load-timezone'
 import { TimezoneModel } from '../../model/timezone'
 import { ok, serverError } from '../helpers/http-helper'
 
-const makeFakeTimezone = (): TimezoneModel => ({ timezone: 'any_timezone' })
+const makeFakeTimezone = (): TimezoneModel => ({ timezone: 'any_timezone', time: 'any_time' })
 
 type SutTypes = {
   sut: TimezoneController

@@ -4,8 +4,10 @@ import moment from 'moment-timezone'
 
 export class TimezoneRepository implements LoadTimezoneRepository {
   async load (): Promise<TimezoneModel> {
+    const timezone = 'Asia/Tokyo'
     return {
-      timezone: moment().tz('Asia/Tokyo').format()
+      timezone,
+      time: moment().tz(timezone).format()
     }
   }
 }
