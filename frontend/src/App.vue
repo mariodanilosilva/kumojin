@@ -1,12 +1,16 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <Timezone/>
+  </div>
 </template>
 
 <script>
 
+import Timezone from './components/Timezone'
 export default {
   name: 'App',
   components: {
+    Timezone
   }
 }
 </script>
